@@ -19,6 +19,11 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
+	// https://mvnrepository.com/artifact/cn.hutool/hutool-all
+implementation 'cn.hutool:hutool-all:5.8.26'
+// https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk18on
+implementation 'org.bouncycastle:bcprov-jdk18on:1.77'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
