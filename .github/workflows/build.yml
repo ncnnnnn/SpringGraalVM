@@ -20,7 +20,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: 21
-          distribution: "zip"
+          distribution: "temurin"
 
       - name: Gradle Build
         run: ./gradlew bootBuildImage
