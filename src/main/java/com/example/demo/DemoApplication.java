@@ -50,7 +50,7 @@ public class DemoApplication {
 	 
  
 	public static void main(String[] args) {
-		sm2Test()；
+		DemoApplication.sm2Test();
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
