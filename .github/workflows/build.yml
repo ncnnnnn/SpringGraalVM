@@ -1,0 +1,32 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: 21
+          distribution: "tar"
+
+      - name: Gradle Build
+        run: ./gradlew bootBuildImage
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Build Output
+          path: build/libs
