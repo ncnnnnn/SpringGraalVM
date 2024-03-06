@@ -11,8 +11,7 @@ import org.junit.Test;
  
 import java.security.KeyPair;
 @SpringBootApplication
-public class DemoApplication {
-	package com.prison.common.util;
+public class DemoApplication { 
  
  
 		public static void sm2Test() {
