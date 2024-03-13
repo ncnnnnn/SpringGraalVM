@@ -1,6 +1,21 @@
-$oldpath = $env:Path
-$json = "settings.json"
+# $oldpath = $env:Path
+$json = "jenv.json"
 $cmd = "help"
+$script_dir = Split-Path -Parent $MyInvocation.MyCommand.Definition
+$json = Join-Path $script_dir $json  
+
+
+$exist = (Test-Path $json) 
+ 
+if ($exist -eq $false) {
+ 
+    $null = New-Item -Path $json -ItemType File
+    $x = $json 
+    $data = @{
+        "jenv" = "1.0.0"
+    }
+    $data | ConvertTo-Json -depth 32 | Set-Content -Path $json
+}
 # $args.Count
 # $args[0]
 function refreshenv {
@@ -33,8 +48,7 @@ if (($args.Count -eq 3) -and ($args[0] -eq "add") ) {
     exit
 }
 if (($args.Count -eq 2) -and ($args[0] -eq "set") ) {
-    $jdkname = $args[1]
-    $jdkname
+    $jdkname = $args[1] 
     $x = $json 
     $json_data = Get-Content -Path $x  | ConvertFrom-Json 
     if (!$json_data.psobject.properties.match($jdkname).Count) {
